@@ -1,0 +1,25 @@
+name: Run Python Script
+
+on:
+  workflow_dispatch:  # Allows you to manually trigger the workflow from the GitHub UI
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Python script with secret
+        env:
+          GMAIL_APP_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        run: python email_hood_river_weather.py
