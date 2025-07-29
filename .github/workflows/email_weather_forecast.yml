@@ -1,10 +1,10 @@
 name: Email Weather Forecast
 
-on:
-  workflow_dispatch:  # Allows you to manually trigger the workflow from the GitHub UI
-  schedule:
-    # Runs at the top of every 6th hour (e.g., 00:00, 06:00, 12:00, 18:00 UTC)
-    - cron: '0 */6 * * *'
+on: 
+   workflow_dispatch:
+   schedule:
+     - cron: '*/6 * * *'
+     
 jobs:
   run-script:
     runs-on: ubuntu-latest
