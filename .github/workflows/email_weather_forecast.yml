@@ -3,7 +3,8 @@ name: Email Weather Forecast
 on: 
    workflow_dispatch:
    schedule:
-     - cron: '0 */6 * * *'
+     - cron: '0 12 * * *' # 5am paciic
+     - cron: '0 1 * * *'  # 6pm pacific
      
 jobs:
   run-script:
@@ -21,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Python script with secret
+      - name: Run Python script to Email weather Forecast
         env:
           GMAIL_APP_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: python email_hood_river_weather.py
